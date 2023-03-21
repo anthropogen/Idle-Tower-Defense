@@ -5,23 +5,24 @@ namespace TowerDefense.Infrastructure
 {
     public sealed class GameStateMachine
     {
-        private readonly Dictionary<Type, IGameState> _states;
-        private IGameState _currentState;
+        private readonly Dictionary<Type, IGameState> states;
+        private IGameState currentState;
 
-        public GameStateMachine()
+        public GameStateMachine(ServiceLocator serviceLocator, Bootstrapper bootstrapper)
         {
-            var states = new Dictionary<Type, IGameState>();
-            _states = states;
+            states = new Dictionary<Type, IGameState>();
+            states[typeof(BootstrapState)] = new BootstrapState(serviceLocator, bootstrapper, this);
+            states[typeof(LoadLevelState)] = new LoadLevelState(serviceLocator.Release<ISceneLoadService>());
         }
 
         public void Change<TState>() where TState : class, IGameState
         {
             var type = typeof(TState);
-            if (_states.TryGetValue(type, out var next))
+            if (states.TryGetValue(type, out var next))
             {
-                _currentState?.Exit();
-                _currentState = next;
-                _currentState.Enter();
+                currentState?.Exit();
+                currentState = next;
+                currentState.Enter();
             }
             else
                 throw new InvalidOperationException($"Doesn't have {type} state");
