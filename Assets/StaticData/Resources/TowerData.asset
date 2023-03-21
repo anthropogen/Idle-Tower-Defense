@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be59b9a62155b5c4ca810cc7f5f6ffdd, type: 3}
+  m_Name: TowerData
+  m_EditorClassIdentifier: 
+  <Template>k__BackingField: {fileID: 8567465231146394791, guid: ace3ea95f9a9bfe4abae3d97ed5beaaf, type: 3}

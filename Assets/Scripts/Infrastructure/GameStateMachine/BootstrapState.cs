@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TowerDefense.Infrastructure
+﻿namespace TowerDefense.Infrastructure
 {
     public class BootstrapState : IGameState
     {
@@ -8,6 +6,8 @@ namespace TowerDefense.Infrastructure
         public BootstrapState(ServiceLocator serviceLocator, Bootstrapper bootstrapper, GameStateMachine stateMachine)
         {
             serviceLocator.Register<ISceneLoadService>(new SceneLoadService(bootstrapper));
+            serviceLocator.Register<IStaticDataService>(new StaticDataService());
+            serviceLocator.Register<IGameFactory>(new GameFactory(serviceLocator.Release<IStaticDataService>()));
             this.stateMachine = stateMachine;
         }
 
@@ -18,33 +18,6 @@ namespace TowerDefense.Infrastructure
 
         public void Exit()
         {
-
-        }
-    }
-
-    public class LoadLevelState : IGameState
-    {
-        private const string LevelName = "Game";
-        private readonly ISceneLoadService sceneLoadService;
-
-        public LoadLevelState(ISceneLoadService sceneLoadService)
-        {
-            this.sceneLoadService = sceneLoadService;
-        }
-
-        public void Enter()
-        {
-            sceneLoadService.LoadLevel(LevelName, OnLevelLoaded);
-        }
-
-        public void Exit()
-        {
-
-        }
-
-        private void OnLevelLoaded()
-        {
-            UnityEngine.Debug.Log("create level");
 
         }
     }

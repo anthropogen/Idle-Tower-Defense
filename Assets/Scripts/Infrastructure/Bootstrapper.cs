@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using NTC.Global.Cache;
+
 
 namespace TowerDefense.Infrastructure
 {
-    public sealed class Bootstrapper : MonoBehaviour
+    public sealed class Bootstrapper : MonoCache
     {
         private GameStateMachine stateMachine;
         private ServiceLocator serviceLocator;
@@ -15,10 +14,13 @@ namespace TowerDefense.Infrastructure
             CreateGameStateMachine();
         }
 
+        protected override void Run()
+            => stateMachine.Run();
+
         private void CreateGameStateMachine()
         {
             serviceLocator = new ServiceLocator();
-            stateMachine = new GameStateMachine(serviceLocator,this);
+            stateMachine = new GameStateMachine(serviceLocator, this);
             stateMachine.Change<BootstrapState>();
         }
     }
