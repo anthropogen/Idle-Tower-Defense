@@ -22,5 +22,10 @@ namespace TowerDefense.Infrastructure
             var data = staticDataService.GetEnemyDataFor(type);
             return GameObject.Instantiate<Enemy>(data.Template);
         }
+
+        public void ClearEnemies()
+        {
+
+        }
     }
 }

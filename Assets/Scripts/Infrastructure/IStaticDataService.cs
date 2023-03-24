@@ -6,6 +6,7 @@ namespace TowerDefense.Infrastructure
     public interface IStaticDataService : IService
     {
         TowerStaticData TowerData { get; }
+        WaveStaticData WavesData { get; }
         EnemyStaticData GetEnemyDataFor(EnemyType type);
     }
 }
