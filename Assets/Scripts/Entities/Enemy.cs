@@ -1,17 +1,24 @@
 ﻿using NTC.Global.Cache;
 using System;
-using System.Collections.Generic;
+using TowerDefense.StaticData;
+using UnityEngine;
 
 namespace TowerDefense.Entities
 {
     public class Enemy : MonoCache
     {
+        [SerializeField] private Rigidbody2D body;
+        private Mover mover;
         public event Action<Enemy> Died;
-    }
 
-    public enum EnemyType
-    {
-        Simple = 0,
-        Fast = 1
+        public void Construct(Tower target, EnemyStaticData staticData)
+        {
+            mover = new Mover(body, target, staticData);
+        }
+
+        protected override void FixedRun()
+        {
+            mover?.Run();
+        }
     }
 }

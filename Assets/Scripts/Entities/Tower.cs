@@ -6,4 +6,9 @@ namespace TowerDefense.Entities
     {
 
     }
+
+    public class Gunner
+    {
+
+    }
 }
