@@ -15,4 +15,5 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   <Speed>k__BackingField: 4
   <Damage>k__BackingField: 1.5
+  <MaxHealth>k__BackingField: 2
   <Template>k__BackingField: {fileID: 5823564304096799727, guid: 47ba1524133371842b890acce615162f, type: 3}

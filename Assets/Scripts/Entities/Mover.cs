@@ -19,7 +19,7 @@ namespace TowerDefense.Entities
         public void Run()
         {
             var direction = (target.transform.position - body.transform.position).normalized;
-            body.velocity = direction * staticData.Speed * Time.fixedDeltaTime;
+            body.velocity = direction * staticData.Speed;
         }
     }
 }

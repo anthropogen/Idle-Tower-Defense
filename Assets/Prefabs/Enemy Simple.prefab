@@ -67,5 +67,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Simple
       objectReference: {fileID: 0}
+    - target: {fileID: 4030563131943344026, guid: c30a8edb21bd80c409dcc9e8970c5c18, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408689927775615199, guid: c30a8edb21bd80c409dcc9e8970c5c18, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408689927775615199, guid: c30a8edb21bd80c409dcc9e8970c5c18, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8111465
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408689927775615199, guid: c30a8edb21bd80c409dcc9e8970c5c18, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30a8edb21bd80c409dcc9e8970c5c18, type: 3}

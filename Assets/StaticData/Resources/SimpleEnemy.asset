@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SimpleEnemy
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 0
-  <Speed>k__BackingField: 25
+  <Speed>k__BackingField: 1
   <Damage>k__BackingField: 1
+  <MaxHealth>k__BackingField: 1
   <Template>k__BackingField: {fileID: 7604295250088504363, guid: 00076adfcdda9b24d8837518cd94da8d, type: 3}

@@ -18,9 +18,9 @@ namespace TowerDefense.Entities
         }
 
         protected override void FixedRun()
-            => body.velocity = direction * speed * Time.fixedDeltaTime;
+            => body.velocity = direction * speed;
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.TryGetComponent(out Damageable damageable))
             {

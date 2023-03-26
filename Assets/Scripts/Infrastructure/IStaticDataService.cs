@@ -7,6 +7,7 @@ namespace TowerDefense.Infrastructure
     {
         TowerStaticData TowerData { get; }
         WaveStaticData WavesData { get; }
+        UpgradeStaticData UpgradeData { get; }
         EnemyStaticData GetEnemyDataFor(EnemyType type);
     }
 }

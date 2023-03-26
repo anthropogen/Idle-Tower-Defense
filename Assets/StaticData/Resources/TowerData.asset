@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be59b9a62155b5c4ca810cc7f5f6ffdd, type: 3}
   m_Name: TowerData
   m_EditorClassIdentifier: 
-  <Template>k__BackingField: {fileID: 8567465231146394791, guid: ace3ea95f9a9bfe4abae3d97ed5beaaf, type: 3}
+  <TowerTemplate>k__BackingField: {fileID: 8567465231146394791, guid: ace3ea95f9a9bfe4abae3d97ed5beaaf, type: 3}
+  <ProjectileTemplate>k__BackingField: {fileID: 3593859478486477350, guid: 4048a8379689fc04a97472cb8d34e0b6, type: 3}

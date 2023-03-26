@@ -11,15 +11,19 @@ namespace TowerDefense.Infrastructure
     {
         private readonly TowerStaticData towerData;
         private readonly WaveStaticData wavesData;
+        private readonly UpgradeStaticData upgradeData;
         private readonly Dictionary<EnemyType, EnemyStaticData> enemyData;
         public TowerStaticData TowerData => towerData;
         public WaveStaticData WavesData => wavesData;
+
+        public UpgradeStaticData UpgradeData => upgradeData;
 
         public StaticDataService()
         {
             towerData = Resources.LoadAll<TowerStaticData>("").FirstOrDefault();
             enemyData = Resources.LoadAll<EnemyStaticData>("").ToDictionary(s => s.Type, s => s);
             wavesData = Resources.LoadAll<WaveStaticData>("").FirstOrDefault();
+            upgradeData = Resources.LoadAll<UpgradeStaticData>("").FirstOrDefault();
         }
 
         public EnemyStaticData GetEnemyDataFor(EnemyType type)

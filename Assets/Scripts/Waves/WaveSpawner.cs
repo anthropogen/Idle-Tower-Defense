@@ -63,8 +63,7 @@ namespace TowerDefense.EnemyWaves
 
         private void Spawn(EnemyType type)
         {
-            var enemy = gameFactory.CreateEnemy(type);
-            enemy.transform.position = GetSpawnPosition();
+            var enemy = gameFactory.CreateEnemy(type, GetSpawnPosition());
             enemy.Died += OnEnemyDied;
             spawnedEnemies.Add(enemy);
         }
@@ -72,6 +71,7 @@ namespace TowerDefense.EnemyWaves
         private void OnEnemyDied(Enemy enemy)
         {
             enemy.Died -= OnEnemyDied;
+            enemy.gameObject.SetActive(false);
             spawnedEnemies.Remove(enemy);
         }
 
@@ -81,7 +81,7 @@ namespace TowerDefense.EnemyWaves
             var viewPortPos = random + new Vector2(0.5f, 0.5f);
             var pos = cam.ViewportToWorldPoint(viewPortPos);
             pos.z = 0;
-            Debug.Log($"<color=red>RandomCircle {random} </color> <color=blue>ViewPort {viewPortPos} </color> <color=green>Pos {pos} </color>");
+            //Debug.Log($"<color=red>RandomCircle {random} </color> <color=blue>ViewPort {viewPortPos} </color> <color=green>Pos {pos} </color>");
             return pos;
         }
 

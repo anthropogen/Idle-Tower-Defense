@@ -1,4 +1,6 @@
-﻿namespace TowerDefense.Infrastructure
+﻿using UnityEngine;
+
+namespace TowerDefense.Infrastructure
 {
     public class BootstrapState : IGameState
     {

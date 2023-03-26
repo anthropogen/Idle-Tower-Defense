@@ -9,6 +9,7 @@ namespace TowerDefense.StaticData
         [field: SerializeField] public EnemyType Type { get; private set; }
         [field: SerializeField, Min(0)] public float Speed { get; private set; }
         [field: SerializeField, Min(0)] public float Damage { get; private set; }
+        [field: SerializeField, Min(0)] public float MaxHealth { get; private set; }
         [field: SerializeField] public Enemy Template { get; private set; }
     }
 }
