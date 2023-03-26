@@ -13,7 +13,7 @@ namespace TowerDefense.EnemyWaves
         private readonly IGameFactory gameFactory;
         private readonly List<SpawnCounter> spawnInfo;
         private readonly HashSet<Enemy> spawnedEnemies;
-        private readonly Camera cam;
+        private Camera cam;
         public bool IsStopSpawn { get; private set; }
 
         public EnemySpawner(IGameFactory gameFactory, Wave enemyWave)
@@ -77,6 +77,8 @@ namespace TowerDefense.EnemyWaves
 
         private Vector3 GetSpawnPosition()
         {
+            if (cam == null)
+                cam = Camera.main;
             var random = Random.insideUnitCircle.normalized;
             var viewPortPos = random + new Vector2(0.5f, 0.5f);
             var pos = cam.ViewportToWorldPoint(viewPortPos);

@@ -14,18 +14,22 @@ namespace TowerDefense.Infrastructure
         }
 
         public void LoadLevel(string name, Action onCompleted = null)
-            => bootstrapper.StartCoroutine(LoadLevelCoroutine(name, onCompleted));
-
+        {
+            bootstrapper.StartCoroutine(LoadLevelCoroutine(name, onCompleted));
+        }
 
         private IEnumerator LoadLevelCoroutine(string name, Action onCompleted = null)
         {
+            if (SceneManager.GetSceneByName(name).isLoaded)
+            {
+                yield return SceneManager.UnloadSceneAsync(name);
+            }
+
             var operation = SceneManager.LoadSceneAsync(name);
-            operation.allowSceneActivation = false;
             while (!operation.isDone)
             {
                 yield return null;
             }
-            operation.allowSceneActivation = true;
             onCompleted?.Invoke();
         }
     }

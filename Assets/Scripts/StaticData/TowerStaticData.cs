@@ -8,5 +8,6 @@ namespace TowerDefense.StaticData
     {
         [field: SerializeField] public Tower TowerTemplate { get; private set; }
         [field: SerializeField] public Projectile ProjectileTemplate { get; private set; }
+        [field: SerializeField, Min(0)] public float MaxHealth { get; private set; }
     }
 }

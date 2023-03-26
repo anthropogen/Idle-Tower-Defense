@@ -31,6 +31,14 @@ namespace TowerDefense.Entities
         protected override void FixedRun()
             => mover?.Run();
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider.TryGetComponent(out Damageable damageable))
+            {
+                damageable.ApplyDamage(1);
+            }
+        }
+
         private void OnDied()
             => Died?.Invoke(this);
     }

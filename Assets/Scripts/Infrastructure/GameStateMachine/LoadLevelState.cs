@@ -1,7 +1,4 @@
-﻿using TowerDefense.Entities;
-using UnityEngine;
-
-namespace TowerDefense.Infrastructure
+﻿namespace TowerDefense.Infrastructure
 {
     public class LoadLevelState : IGameState
     {
