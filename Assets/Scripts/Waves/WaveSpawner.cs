@@ -61,7 +61,6 @@ namespace TowerDefense.EnemyWaves
                     counter.Count--;
                     counter.PrevSpawnTime = NextSpawnTime(counter.SpawnDelay.x, counter.SpawnDelay.y);
                 }
-
             }
         }
 

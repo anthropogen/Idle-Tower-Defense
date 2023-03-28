@@ -36,10 +36,22 @@ namespace TowerDefense.Entities
         public PlayerData()
         {
             upgradeLevels = new Dictionary<UpgradeType, int>();
+            SetZeroLevels();
+        }
+
+
+
+        public void Reset()
+        {
+            Coins = 0;
+            SetZeroLevels();
+        }
+
+        private void SetZeroLevels()
+        {
             foreach (var item in Enum.GetValues(typeof(UpgradeType)))
                 upgradeLevels[(UpgradeType)item] = 0;
         }
-
     }
 
 }

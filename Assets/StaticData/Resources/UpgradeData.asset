@@ -18,22 +18,22 @@ MonoBehaviour:
     - <Value>k__BackingField: 1
       <Price>k__BackingField: 0
     - <Value>k__BackingField: 0.75
-      <Price>k__BackingField: 15
+      <Price>k__BackingField: 4
     - <Value>k__BackingField: 0.5
-      <Price>k__BackingField: 25
+      <Price>k__BackingField: 8
   - <Type>k__BackingField: 1
     <Values>k__BackingField:
     - <Value>k__BackingField: 1
       <Price>k__BackingField: 0
     - <Value>k__BackingField: 1.5
-      <Price>k__BackingField: 15
+      <Price>k__BackingField: 4
     - <Value>k__BackingField: 2
-      <Price>k__BackingField: 30
+      <Price>k__BackingField: 12
   - <Type>k__BackingField: 2
     <Values>k__BackingField:
     - <Value>k__BackingField: 2
       <Price>k__BackingField: 0
     - <Value>k__BackingField: 3
-      <Price>k__BackingField: 35
+      <Price>k__BackingField: 6
     - <Value>k__BackingField: 4
-      <Price>k__BackingField: 55
+      <Price>k__BackingField: 16

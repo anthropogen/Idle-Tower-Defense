@@ -17,7 +17,7 @@ namespace TowerDefense.Infrastructure
             states[typeof(BootstrapState)] = new BootstrapState(serviceLocator, bootstrapper, this);
             states[typeof(LoadLevelState)] = new LoadLevelState(serviceLocator.Release<ISceneLoadService>(), serviceLocator.Release<IGameFactory>(), this,playerData);
             states[typeof(GameLoopState)] = new GameLoopState(serviceLocator.Release<IGameFactory>(), this, serviceLocator.Release<IStaticDataService>(),playerData);
-            states[typeof(FinishState)] = new FinishState(serviceLocator.Release<IGameFactory>(), this);
+            states[typeof(FinishState)] = new FinishState(serviceLocator.Release<IGameFactory>(), this,playerData);
         }
 
         public void Change<TState>() where TState : class, IGameState

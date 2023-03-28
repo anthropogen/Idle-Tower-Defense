@@ -17,6 +17,13 @@ namespace TowerDefense.UI
             this.upgradeStaticData = upgradeStaticData;
             playerData.CoinsChanged += OnCoinsChanged;
             OnCoinsChanged(playerData.Coins);
+
+            foreach (var button in upgradeButtons)
+            {
+                int level = playerData[button.Type];
+                var upgrade = upgradeStaticData.GetUpgradeValueFor(button.Type, level + 1);
+                RedrawButton(button, upgrade);
+            }
         }
 
 
@@ -26,8 +33,6 @@ namespace TowerDefense.UI
             {
                 button.OnClick += OnClickUpgradeButton;
             }
-            if (playerData != null)
-                playerData.CoinsChanged += OnCoinsChanged;
         }
 
         protected override void OnDisabled()
@@ -48,7 +53,7 @@ namespace TowerDefense.UI
             if (upgradeStaticData.HasUpgradeFor(upgradeType, level + 1))
             {
                 var nextUpgrade = upgradeStaticData.GetUpgradeValueFor(upgradeType, level + 1);
-                button.SetDescription(nextUpgrade.Price.ToString(), nextUpgrade.Value.ToString());
+                RedrawButton(button, nextUpgrade);
             }
             else
             {
@@ -57,9 +62,21 @@ namespace TowerDefense.UI
             playerData.Coins -= upgrade.Price;
         }
 
+        private static void RedrawButton(UpgradeButton button, UpgradeStaticData.UpgradeData.UpgradeValue nextUpgrade)
+        {
+            button.SetDescription(nextUpgrade.Price.ToString(), nextUpgrade.Value.ToString());
+        }
+
         private void OnCoinsChanged(int coins)
         {
-
+            foreach (var button in upgradeButtons)
+            {
+                if (!button.HasNextUpgrade)
+                    continue;
+                int level = playerData[button.Type];
+                var upgrade = upgradeStaticData.GetUpgradeValueFor(button.Type, level + 1);
+                button.SetInteractable(upgrade.Price <= playerData.Coins, true);
+            }
         }
     }
 }

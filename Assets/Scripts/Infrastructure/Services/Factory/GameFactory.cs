@@ -29,6 +29,7 @@ namespace TowerDefense.Infrastructure
             tower = GameObject.Instantiate<Tower>(staticDataService.TowerData.TowerTemplate);
             tower.Construct(this, staticDataService.UpgradeData, playerData);
             tower.Get<Damageable>().Construct(staticDataService.TowerData.MaxHealth);
+            tower.transform.position = new Vector3(0, 1);
             return tower;
         }
 

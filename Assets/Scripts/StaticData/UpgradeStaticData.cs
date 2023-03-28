@@ -20,7 +20,7 @@ namespace TowerDefense.StaticData
 
             if (values.TryGetValue(type, out var value))
             {
-                if (value.Length < level)
+                if (value.Length > level)
                     return true;
             }
             return false;
