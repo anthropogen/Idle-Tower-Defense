@@ -1,28 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using TowerDefense.Infrastructure;
-using TowerDefense.StaticData;
 using UnityEngine;
 
 namespace TowerDefense.Entities
 {
     public class Gunner
     {
-        private readonly Dictionary<UpgradeType, int> upgradeLevels;
         private readonly IGameFactory gameFactory;
-        private readonly UpgradeStaticData upgradeData;
         private readonly CircleCollider2D circleCollider;
         private readonly ContactFilter2D contactFilter;
-        private float damage;
-        private float firingRate = 1;
-        private float range;
         private float lastShotTime;
         private RaycastHit2D[] hits = new RaycastHit2D[5];
+        public float Damage { get; set; }
+        public float FiringRate { get; set; }
 
-        public Gunner(IGameFactory gameFactory, UpgradeStaticData upgradeData, CircleCollider2D circleCollider, LayerMask enemyMask)
+        public Gunner(IGameFactory gameFactory, CircleCollider2D circleCollider, LayerMask enemyMask)
         {
             this.gameFactory = gameFactory;
-            this.upgradeData = upgradeData;
             this.circleCollider = circleCollider;
             contactFilter = new ContactFilter2D();
             contactFilter.SetLayerMask(enemyMask);
@@ -44,8 +38,8 @@ namespace TowerDefense.Entities
         private void Fire(Enemy enemy)
         {
             var direction = Vector3.Normalize(enemy.transform.position - circleCollider.transform.position);
-            gameFactory.CreateProjectile(circleCollider.transform.position, direction, 10, 2);
-            lastShotTime = Time.time + firingRate;
+            gameFactory.CreateProjectile(circleCollider.transform.position, direction, 10, Damage);
+            lastShotTime = Time.time + FiringRate;
         }
 
         private Collider2D GetNearestEnemy()

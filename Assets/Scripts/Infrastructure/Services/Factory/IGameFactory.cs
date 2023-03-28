@@ -1,6 +1,7 @@
 ﻿using TowerDefense.Entities;
+using TowerDefense.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using static TowerDefense.Entities.Tower;
 
 namespace TowerDefense.Infrastructure
 {
@@ -11,6 +12,7 @@ namespace TowerDefense.Infrastructure
         Enemy CreateEnemy(EnemyType type, Vector2 position);
         Projectile CreateProjectile(Vector2 position, Vector2 direction, float speed, float damage);
         void CreateResultWindow(GameStateMachine stateMachine);
-        Tower CreateTower();
+        UpgradePanel CreateUpgradePanel(PlayerData playerData);
+        Tower CreateTower(PlayerData playerData);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TowerDefense.Infrastructure
 {
-    public class AssetProvider :  IAssetProvider
+    public class AssetProvider : IAssetProvider
     {
         private readonly AssetsData assetsData;
 
@@ -16,6 +16,11 @@ namespace TowerDefense.Infrastructure
         public ResultWindow GetResultWindow()
         {
             return assetsData.ResultWindow;
+        }
+
+        public UpgradePanel GetUpgradePanel()
+        {
+            return assetsData.upgradePanel;
         }
     }
 }

@@ -7,5 +7,6 @@ namespace TowerDefense.Infrastructure
     public class AssetsData : ScriptableObject
     {
         [field: SerializeField] public ResultWindow ResultWindow { get; private set; }
+        [field: SerializeField] public UpgradePanel upgradePanel { get; private set; }
     }
 }

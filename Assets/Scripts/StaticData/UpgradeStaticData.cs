@@ -2,6 +2,7 @@
 using System.Linq;
 using TowerDefense.Entities;
 using UnityEngine;
+using static TowerDefense.StaticData.UpgradeStaticData.UpgradeData;
 
 namespace TowerDefense.StaticData
 {
@@ -10,7 +11,7 @@ namespace TowerDefense.StaticData
     public class UpgradeStaticData : ScriptableObject
     {
         [SerializeField] private UpgradeData[] upgrades;
-        private Dictionary<UpgradeType, float[]> values;
+        private Dictionary<UpgradeType, UpgradeValue[]> values;
 
         public bool HasUpgradeFor(UpgradeType type, int level)
         {
@@ -25,7 +26,7 @@ namespace TowerDefense.StaticData
             return false;
         }
 
-        public float GetUpgradeValueFor(UpgradeType type, int level)
+        public UpgradeValue GetUpgradeValueFor(UpgradeType type, int level)
         {
             if (values == null)
                 CreateValuesDictionary();
@@ -35,7 +36,7 @@ namespace TowerDefense.StaticData
                 level = Mathf.Min(level, value.Length - 1);
                 return value[level];
             }
-            return -1;
+            return null;
         }
 
         private void CreateValuesDictionary()
@@ -45,7 +46,14 @@ namespace TowerDefense.StaticData
         public class UpgradeData
         {
             [field: SerializeField] public UpgradeType Type { get; private set; }
-            [field: SerializeField] public float[] Values { get; private set; }
+            [field: SerializeField] public UpgradeValue[] Values { get; private set; }
+
+            [System.Serializable]
+            public class UpgradeValue
+            {
+                [field: SerializeField] public float Value { get; private set; }
+                [field: SerializeField] public int Price { get; private set; }
+            }
         }
     }
 }

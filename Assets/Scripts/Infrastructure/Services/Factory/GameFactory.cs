@@ -1,7 +1,9 @@
 using NTC.Global.System;
 using System.Collections.Generic;
 using TowerDefense.Entities;
+using TowerDefense.UI;
 using UnityEngine;
+using static TowerDefense.Entities.Tower;
 
 namespace TowerDefense.Infrastructure
 {
@@ -22,14 +24,13 @@ namespace TowerDefense.Infrastructure
             this.assetProvider = assetProvider;
         }
 
-        public Tower CreateTower()
+        public Tower CreateTower(PlayerData playerData)
         {
             tower = GameObject.Instantiate<Tower>(staticDataService.TowerData.TowerTemplate);
-            tower.Construct(this, staticDataService.UpgradeData);
+            tower.Construct(this, staticDataService.UpgradeData, playerData);
             tower.Get<Damageable>().Construct(staticDataService.TowerData.MaxHealth);
             return tower;
         }
-
 
 
         public Enemy CreateEnemy(EnemyType type, Vector2 position)
@@ -72,6 +73,13 @@ namespace TowerDefense.Infrastructure
         {
             var window = GameObject.Instantiate(assetProvider.GetResultWindow());
             window.Construct(stateMachine);
+        }
+
+        public UpgradePanel CreateUpgradePanel(PlayerData playerData)
+        {
+            var panel = GameObject.Instantiate(assetProvider.GetUpgradePanel());
+            panel.Construct(playerData, staticDataService.UpgradeData);
+            return panel;
         }
     }
 }

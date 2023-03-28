@@ -1,4 +1,7 @@
-﻿namespace TowerDefense.Infrastructure
+﻿using TowerDefense.Entities;
+using static TowerDefense.Entities.Tower;
+
+namespace TowerDefense.Infrastructure
 {
     public class LoadLevelState : IGameState
     {
@@ -26,7 +29,9 @@
 
         private void OnLevelLoaded()
         {
-            gameFactory.CreateTower();
+            var playerData = new PlayerData();
+            gameFactory.CreateTower(playerData);
+            gameFactory.CreateUpgradePanel(playerData);
             UnityEngine.Debug.Log($"<color=orange>create level</color> ");
             stateMachine.Change<GameLoopState>();
         }
