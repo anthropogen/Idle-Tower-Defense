@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Assets
   m_EditorClassIdentifier: 
   <ResultWindow>k__BackingField: {fileID: 4187561337663739175, guid: b5fbf2152778f7f4cbc877c10b90b639, type: 3}
+  <UpgradePanel>k__BackingField: {fileID: -4230792446439288830, guid: d3d8b89ddcbd0c74489c053037e64531, type: 3}
+  <CoinCounter>k__BackingField: {fileID: 6309008585811930007, guid: df37b60210e6f2a4a8d0d9f9fce3c73f, type: 3}

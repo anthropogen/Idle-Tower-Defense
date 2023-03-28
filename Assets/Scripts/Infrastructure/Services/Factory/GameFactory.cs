@@ -32,7 +32,6 @@ namespace TowerDefense.Infrastructure
             return tower;
         }
 
-
         public Enemy CreateEnemy(EnemyType type, Vector2 position)
         {
             if (enemyParent == null)
@@ -80,6 +79,13 @@ namespace TowerDefense.Infrastructure
             var panel = GameObject.Instantiate(assetProvider.GetUpgradePanel());
             panel.Construct(playerData, staticDataService.UpgradeData);
             return panel;
+        }
+
+        public CoinCounter CreateCounter(PlayerData playerData)
+        {
+            var counter = GameObject.Instantiate(assetProvider.GetCoinCounter());
+            counter.Construct(playerData);
+            return counter;
         }
     }
 }

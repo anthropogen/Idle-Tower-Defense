@@ -20,7 +20,12 @@ namespace TowerDefense.Infrastructure
 
         public UpgradePanel GetUpgradePanel()
         {
-            return assetsData.upgradePanel;
+            return assetsData.UpgradePanel;
+        }
+
+        public CoinCounter GetCoinCounter()
+        {
+            return assetsData.CoinCounter;
         }
     }
 }

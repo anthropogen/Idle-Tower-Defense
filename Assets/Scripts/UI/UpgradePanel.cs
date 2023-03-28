@@ -2,7 +2,6 @@
 using TowerDefense.Entities;
 using TowerDefense.StaticData;
 using UnityEngine;
-using static TowerDefense.Entities.Tower;
 
 namespace TowerDefense.UI
 {

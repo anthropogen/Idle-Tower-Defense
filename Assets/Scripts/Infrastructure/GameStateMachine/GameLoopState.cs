@@ -11,11 +11,11 @@ namespace TowerDefense.Infrastructure
         private readonly IGameFactory gameFactory;
         private readonly GameStateMachine stateMachine;
 
-        public GameLoopState(IGameFactory gameFactory, GameStateMachine stateMachine, IStaticDataService staticDataService)
+        public GameLoopState(IGameFactory gameFactory, GameStateMachine stateMachine, IStaticDataService staticDataService, PlayerData playerData)
         {
             this.gameFactory = gameFactory;
             this.stateMachine = stateMachine;
-            wavesController = new EnemyWavesController(staticDataService.WavesData, gameFactory);
+            wavesController = new EnemyWavesController(staticDataService, gameFactory, playerData);
         }
 
         public void Enter()

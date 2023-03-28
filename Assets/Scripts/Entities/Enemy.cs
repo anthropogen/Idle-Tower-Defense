@@ -10,6 +10,7 @@ namespace TowerDefense.Entities
         [SerializeField] private Rigidbody2D body;
         [SerializeField] private Damageable damageable;
         [SerializeField] private new Collider2D collider;
+        [field: SerializeField] public EnemyType Type { get; private set; }
         private Mover mover;
         public event Action<Enemy> Died;
 

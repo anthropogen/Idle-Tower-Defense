@@ -13,11 +13,15 @@ namespace TowerDefense.EnemyWaves
         private readonly IGameFactory gameFactory;
         private readonly List<SpawnCounter> spawnInfo;
         private readonly HashSet<Enemy> spawnedEnemies;
+        private readonly PlayerData playerData;
+        private readonly IStaticDataService staticDataService;
         private Camera cam;
         public bool IsStopSpawn { get; private set; }
 
-        public EnemySpawner(IGameFactory gameFactory, Wave enemyWave)
+        public EnemySpawner(IGameFactory gameFactory, Wave enemyWave, IStaticDataService staticDataService, PlayerData playerData)
         {
+            this.playerData = playerData;
+            this.staticDataService = staticDataService;
             this.gameFactory = gameFactory;
             spawnedEnemies = new HashSet<Enemy>();
             cam = Camera.main;
@@ -73,6 +77,8 @@ namespace TowerDefense.EnemyWaves
             enemy.Died -= OnEnemyDied;
             enemy.gameObject.SetActive(false);
             spawnedEnemies.Remove(enemy);
+            var data = staticDataService.GetEnemyDataFor(enemy.Type);
+            playerData.Coins += data.Reward;
         }
 
         private Vector3 GetSpawnPosition()
@@ -83,7 +89,6 @@ namespace TowerDefense.EnemyWaves
             var viewPortPos = random + new Vector2(0.5f, 0.5f);
             var pos = cam.ViewportToWorldPoint(viewPortPos);
             pos.z = 0;
-            //Debug.Log($"<color=red>RandomCircle {random} </color> <color=blue>ViewPort {viewPortPos} </color> <color=green>Pos {pos} </color>");
             return pos;
         }
 

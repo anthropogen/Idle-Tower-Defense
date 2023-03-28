@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3666943761865022755, guid: c30a8edb21bd80c409dcc9e8970c5c18, type: 3}
+      propertyPath: <Type>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3666943761865022782, guid: c30a8edb21bd80c409dcc9e8970c5c18, type: 3}
       propertyPath: m_Name
       value: Enemy Fast

@@ -14,5 +14,6 @@ namespace TowerDefense.Infrastructure
         void CreateResultWindow(GameStateMachine stateMachine);
         UpgradePanel CreateUpgradePanel(PlayerData playerData);
         Tower CreateTower(PlayerData playerData);
+        CoinCounter CreateCounter(PlayerData playerData);
     }
 }

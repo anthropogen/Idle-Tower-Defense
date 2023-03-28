@@ -1,5 +1,4 @@
 ﻿using TowerDefense.Entities;
-using static TowerDefense.Entities.Tower;
 
 namespace TowerDefense.Infrastructure
 {
@@ -9,12 +8,14 @@ namespace TowerDefense.Infrastructure
         private readonly ISceneLoadService sceneLoadService;
         private readonly IGameFactory gameFactory;
         private readonly GameStateMachine stateMachine;
+        private readonly PlayerData playerData;
 
-        public LoadLevelState(ISceneLoadService sceneLoadService, IGameFactory gameFactory, GameStateMachine stateMachine)
+        public LoadLevelState(ISceneLoadService sceneLoadService, IGameFactory gameFactory, GameStateMachine stateMachine, PlayerData playerData)
         {
             this.sceneLoadService = sceneLoadService;
             this.gameFactory = gameFactory;
             this.stateMachine = stateMachine;
+            this.playerData = playerData;
         }
 
         public void Enter()
@@ -29,10 +30,9 @@ namespace TowerDefense.Infrastructure
 
         private void OnLevelLoaded()
         {
-            var playerData = new PlayerData();
             gameFactory.CreateTower(playerData);
             gameFactory.CreateUpgradePanel(playerData);
-            UnityEngine.Debug.Log($"<color=orange>create level</color> ");
+            gameFactory.CreateCounter(playerData);
             stateMachine.Change<GameLoopState>();
         }
     }
